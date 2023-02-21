@@ -1,0 +1,9 @@
+---
+// component imports
+const { prevUrl, nextUrl } = Astro.props
+---
+
+<nav aria-label="Blog pages">
+  {prevUrl && <a href={prevUrl}>Previous</a>}
+  {nextUrl && <a href={nextUrl}>Next</a>}
+</nav>

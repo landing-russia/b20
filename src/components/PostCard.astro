@@ -1,0 +1,19 @@
+---
+import { formatDate } from "@utils"
+
+const { data, url } = Astro.props
+
+const { title, date, tags } = data
+---
+
+<div>
+  <a href={`/blog/${url}/`}><h3>{title}</h3></a>
+  <p>{formatDate(date)}</p>
+  {tags && tags.map((tag) => <small>{tag} </small>)}
+</div>
+
+<style>
+  small {
+    text-transform: uppercase;
+  }
+</style>

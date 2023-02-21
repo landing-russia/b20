@@ -1,0 +1,15 @@
+---
+import { formatDate } from "@utils"
+const { relatedPosts } = Astro.props
+---
+
+{
+  relatedPosts.map((post) => (
+    <div>
+      <h3>
+        <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
+      </h3>
+      <small>{formatDate(post.data.date)}</small>
+    </div>
+  ))
+}

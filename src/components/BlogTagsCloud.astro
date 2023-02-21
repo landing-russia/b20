@@ -1,0 +1,29 @@
+---
+import { getCollection, CollectionEntry } from "astro:content";
+import { formatBlogPosts } from "@utils";
+
+const allPosts = await getCollection("blog");
+const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts);
+const allCategories = formattedPosts.map((post) => post.data.tags).flat();
+const processedCats = allCategories.reduce((acc, category) => {
+  // check if the category exists in the acc
+  const value = acc[category] || 0;
+  return {
+    ...acc,
+    [category]: value + 1,
+  };
+}, {});
+const { showCount } = Astro.props;
+---
+
+<ul>
+  {
+    Object.entries(processedCats).map(([key, val]) => (
+      <li>
+        <a class="badge" href={`/blog/tag/${key}/`}>
+          {key} {showCount && `(${val})`}
+        </a>
+      </li>
+    ))
+  }
+</ul>
