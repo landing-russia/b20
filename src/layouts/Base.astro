@@ -1,5 +1,26 @@
 ---
-import Navbar from "@components/Navbar.astro";
+import "@fontsource/inter/100.css"
+import "@fontsource/inter/200.css"
+import "@fontsource/inter/300.css"
+import "@fontsource/inter/400.css"
+import "@fontsource/inter/500.css"
+import "@fontsource/inter/600.css"
+import "@fontsource/inter/700.css"
+import "@fontsource/inter/800.css"
+import "@fontsource/inter/900.css"
+import "@fontsource/bitter/100.css"
+import "@fontsource/bitter/200.css"
+import "@fontsource/bitter/300.css"
+import "@fontsource/bitter/400.css"
+import "@fontsource/bitter/500.css"
+import "@fontsource/bitter/600.css"
+import "@fontsource/bitter/700.css"
+import "@fontsource/bitter/800.css"
+import "@fontsource/bitter/900.css"
+
+import "@styles/base.css"
+
+import Navbar from "@components/Navbar.astro"
 
 const { title = "B20" } = Astro.props
 ---
@@ -12,14 +33,8 @@ const { title = "B20" } = Astro.props
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="bg-gray-100 dark:bg-gray-900 font-sans dark:text-white">
     <Navbar />
     <slot />
   </body>
 </html>
-
-<style>
-  body {
-    font-family: sans-serif;
-  }
-</style>

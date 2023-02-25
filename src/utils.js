@@ -30,7 +30,7 @@ export function formatBlogPosts(
   const filteredPosts = posts.reduce((acc, post) => {
     const { date, draft } = post.data
     // filterOutDrafts if true
-    if (filterOutDrafts && draft) return acc
+    if (filterOutDrafts && import.meta.env.PROD && draft) return acc
 
     // filterOutFuturePosts if true
     if (filterOutFuturePosts && new Date(date) > new Date()) return acc

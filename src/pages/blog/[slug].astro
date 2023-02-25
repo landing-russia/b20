@@ -29,14 +29,19 @@ const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts, {
 // dark.some(r => dark2.includes(r))
 
 const relatedPosts = formattedPosts
-  .filter((post) => post.data.tags.some(r => tags.includes(r)) && post.data.title !== title)
+  .filter(
+    (post) =>
+      post.data.tags.some((r) => tags.includes(r)) && post.data.title !== title
+  )
   .slice(0, 3)
 ---
 
 <Base {title}>
-  <h1>{title}</h1>
-  <p><small>{formatDate(date)}</small></p>
-  <Content />
+  <div class="prose lg:prose-xl prose-headings:text-gray-800 dark:prose-headings:text-gray-200 prose-p:text-gray-500 dark:prose-p:text-gray-400 max-w-prose mx-auto p-4 prose-strong:text-gray-600 dark:prose-strong:text-gray-300 prose-img:rounded-xl prose-ul:list-none prose-ul:pl-0 prose-li:pl-0 dark:prose-invert">
+    <h1>{title}</h1>
+    <p><small>{formatDate(date)}</small></p>
+    <Content />
+  </div>
   {
     tags &&
       tags.map((tag) => (
@@ -55,9 +60,3 @@ const relatedPosts = formattedPosts
     )
   }
 </Base>
-
-<style>
-  a {
-    text-transform: uppercase;
-  }
-</style>
