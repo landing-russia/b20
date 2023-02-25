@@ -21,6 +21,7 @@ import "@fontsource/bitter/900.css"
 import "@styles/base.css"
 
 import Navbar from "@components/Navbar.astro"
+import Header from "@components/Header.astro"
 import Footer from "@components/Footer.astro"
 
 const { title = "B20" } = Astro.props
@@ -36,7 +37,7 @@ const { title = "B20" } = Astro.props
   </head>
   <body class="bg-gray-100 dark:bg-gray-900 font-sans dark:text-white">
     <div class="flex flex-col min-h-screen">
-      <Navbar />
+      <Header />
       <main class="w-full">
         <slot />
       </main>
