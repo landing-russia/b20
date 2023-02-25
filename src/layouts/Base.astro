@@ -21,6 +21,7 @@ import "@fontsource/bitter/900.css"
 import "@styles/base.css"
 
 import Navbar from "@components/Navbar.astro"
+import Footer from "@components/Footer.astro"
 
 const { title = "B20" } = Astro.props
 ---
@@ -34,7 +35,14 @@ const { title = "B20" } = Astro.props
     <title>{title}</title>
   </head>
   <body class="bg-gray-100 dark:bg-gray-900 font-sans dark:text-white">
-    <Navbar />
-    <slot />
+    <div class="flex flex-col min-h-screen">
+      <Navbar />
+      <main class="w-full">
+        <slot />
+      </main>
+      <div class="mt-auto">
+        <Footer />
+      </div>
+    </div>
   </body>
 </html>
