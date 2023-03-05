@@ -4,23 +4,23 @@ import { formatBlogPosts } from "@utils";
 
 const allPosts = await getCollection("blog");
 const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts);
-const allCategories = formattedPosts.map((post) => post.data.tags).flat();
-const processedCats = allCategories.reduce((acc, category) => {
+const allTags = formattedPosts.map((post) => post.data.tags).flat();
+const processedTags = allTags.reduce((acc, tag) => {
   // check if the category exists in the acc
-  const value = acc[category] || 0;
+  const value = acc[tag] || 0;
   return {
     ...acc,
-    [category]: value + 1,
+    [tag]: value + 1,
   };
 }, {});
 const { showCount } = Astro.props;
 ---
 
-<ul>
+<ul class="flex">
   {
-    Object.entries(processedCats).map(([key, val]) => (
+    Object.entries(processedTags).map(([key, val]) => (
       <li>
-        <a class="badge" href={`/blog/tag/${key}/`}>
+        <a class="inline-block px-2.5 py-0.5 rounded-lg text-base font-medium bg-gray-50 text-gray-500 shadow mr-3" href={`/blog/tag/${key}/`}>
           {key} {showCount && `(${val})`}
         </a>
       </li>

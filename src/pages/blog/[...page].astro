@@ -17,10 +17,23 @@ const { page } = Astro.props
 ---
 
 <Base title="Blog">
-  <h1 class="h1">New Blog Posts</h1>
-  <div class="post-container">
+  <h1
+    class="max-w-7xl mx-auto p-4 text-gray-700 dark:text-gray-200 font-extrabold text-4xl font-serif mt-6"
+  >
+    Блог
+  </h1>
+  <div
+    class="max-w-7xl mx-auto p-4 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+  >
     {page.data.map((post) => <PostCard data={post.data} url={post.slug} />)}
   </div>
   <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-  <BlogTagsCloud showCount={true} />
+  <div class="max-w-7xl mx-auto p-4 mb-10">
+    <h3
+      class="text-gray-700 dark:text-gray-200 font-extrabold text-2xl font-serif mt-2 mb-4"
+    >
+      Облако тегов
+    </h3>
+    <BlogTagsCloud showCount={true} />
+  </div>
 </Base>

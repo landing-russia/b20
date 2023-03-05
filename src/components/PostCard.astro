@@ -3,17 +3,30 @@ import { formatDate } from "@utils"
 
 const { data, url } = Astro.props
 
-const { title, date, tags } = data
+const { title, description, date, tags } = data
 ---
 
-<div>
-  <a href={`/blog/${url}/`}><h3>{title}</h3></a>
-  <p>{formatDate(date)}</p>
-  {tags && tags.map((tag) => <small>{tag} </small>)}
-</div>
-
-<style>
-  small {
-    text-transform: uppercase;
-  }
-</style>
+<a
+  href={`/blog/${url}/`}
+  class="group p-4 pb-2 bg-white shadow hover:shadow-lg dark:bg-gray-900 border border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-500 rounded-md transition duration-150"
+>
+  <div class="text-xs text-gray-400 dark:text-gray-500 mb-2">
+    {formatDate(date)}
+  </div>
+  <h3
+    class="line-clamp-2 font-serif leading-5 font-bold text-xl text-gray-700 dark:text-gray-300 dark:group-hover:text-gray-100 transition duration-150 mb-2"
+  >
+    {title}
+  </h3>
+  <p class="line-clamp-2 mb-2 leading-5 text-gray-500">{description}</p>
+  <div class="inline">
+    {
+      tags &&
+        tags.map((tag) => (
+          <small class="inline-block px-2.5 py-0.5 rounded-lg text-sm font-medium bg-gray-50 text-gray-500 shadow mb-2 mr-2">
+            {tag}{" "}
+          </small>
+        ))
+    }
+  </div>
+</a>
