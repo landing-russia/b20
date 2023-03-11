@@ -1,0 +1,51 @@
+---
+title: Django Database ORM Mastery
+description: Learn how to master building and interacting with databases within a Django project.
+date: 2023-03-10
+category: Django
+tags:
+  - django-orm
+author: Very Academy
+---
+
+import { Picture } from "@astrojs/image/components"
+
+## New Django Developer Django Induction Optional
+
+```
+mkdir project
+cd project
+python -m venv venv
+pip install django
+pip list
+pip freeze > requirements.txt
+pip install -r requirements.txt
+django-admin startproject core .
+python manage.py startapp newapp
+```
+
+```py
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'newapp'
+]
+```
+
+```
+python manage.py runserver
+python manage.py runserver 8080
+```
+
+import wp1 from "@assets/django-orm-01.png"
+
+<Picture
+  src={wp1}
+  widths={[200, 400, 800]}
+  sizes="(max-width: 800px) 100vw, 1000px"
+  alt="RequestResponse Cycle"
+/>
