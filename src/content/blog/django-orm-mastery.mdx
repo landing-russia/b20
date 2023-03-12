@@ -49,3 +49,29 @@ import wp1 from "@assets/django-orm-01.png"
   sizes="(max-width: 800px) 100vw, 1000px"
   alt="RequestResponse Cycle"
 />
+
+```py
+# newapp/views.py
+from django.shortcuts import render
+
+def home(request):
+    return render(request, "index.html")
+
+# core/urls.py
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('newapp.urls'))
+]
+
+# newapp/urls.py
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home),
+]
+
+```
