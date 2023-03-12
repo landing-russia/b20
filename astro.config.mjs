@@ -8,7 +8,7 @@ import tailwind from "@astrojs/tailwind"
 // https://astro.build/config
 export default defineConfig({
   site: "https://landing-russia.github.io",
-  base: "/b20",
+  // base: "/b20",
   integrations: [
     image({
       serviceEntryPoint: "@astrojs/image/sharp",
