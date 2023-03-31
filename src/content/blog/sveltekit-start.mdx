@@ -10,5 +10,28 @@ author: landing-russia.ru
 
 ```
 npm create svelte@latest my-app
-npx svelte-add@latest tailwindcss --forms --typography --daisyui
+npx svelte-add@latest tailwindcss --forms --typography
+npm i flowbite flowbite-svelte classnames @popperjs/core
+```
+
+```js
+const typography = require("@tailwindcss/typography")
+const forms = require("@tailwindcss/forms")
+const flowbite = require("flowbite/plugin")
+
+const config = {
+  content: [
+    "./src/**/*.{html,js,svelte,ts}",
+    "./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}",
+  ],
+
+  theme: {
+    extend: {},
+  },
+
+  plugins: [forms, typography, flowbite],
+  darkMode: "class",
+}
+
+module.exports = config
 ```
