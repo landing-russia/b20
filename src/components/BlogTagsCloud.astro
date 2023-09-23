@@ -1,26 +1,29 @@
 ---
-import { getCollection, CollectionEntry } from "astro:content";
-import { formatBlogPosts } from "@utils";
+import { getCollection, CollectionEntry } from "astro:content"
+import { formatBlogPosts } from "@utils"
 
-const allPosts = await getCollection("blog");
-const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts);
-const allTags = formattedPosts.map((post) => post.data.tags).flat();
+const allPosts = await getCollection("blog")
+const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts)
+const allTags = formattedPosts.map((post) => post.data.tags).flat()
 const processedTags = allTags.reduce((acc, tag) => {
   // check if the category exists in the acc
-  const value = acc[tag] || 0;
+  const value = acc[tag] || 0
   return {
     ...acc,
     [tag]: value + 1,
-  };
-}, {});
-const { showCount } = Astro.props;
+  }
+}, {})
+const { showCount } = Astro.props
 ---
 
 <ul class="flex flex-wrap">
   {
     Object.entries(processedTags).map(([key, val]) => (
       <li>
-        <a class="inline-block px-2.5 py-0.5 mb-4 rounded-lg text-base font-medium bg-gray-50 text-gray-500 shadow mr-3" href={`/blog/tag/${key}/`}>
+        <a
+          class="inline-block px-2.5 py-0.5 mb-4 rounded-lg text-base font-medium bg-gray-50 text-gray-500 shadow mr-3"
+          href={`/blog/tag/${key}/`}
+        >
           {key} {showCount && `(${val})`}
         </a>
       </li>
